@@ -1,0 +1,18 @@
+
+<div class="text-error" *ngIf="control.touched && !control.valid">
+  <div *ngIf="control.errors!['required']">
+        {{controlName}} is required
+  </div>
+
+  <div *ngIf="control.errors!['minlength']">
+        {{controlName}} must be at least {{control.errors!['minlength'].requiredLength}} characters long
+  </div>
+
+  <div *ngIf="control.errors!['maxlength']">
+        {{controlName}} cannot be more than {{control.errors!['maxlength'].requiredLength}} characters long
+  </div>
+
+  <div *ngIf="control.errors!['email']">
+        {{controlName}} must be a valid email address
+  </div>
+</div>

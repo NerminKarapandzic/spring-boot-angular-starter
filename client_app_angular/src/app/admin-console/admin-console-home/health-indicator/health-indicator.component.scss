@@ -1,0 +1,21 @@
+.indicator{
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+
+  &.up{
+    background-color: #00b300;
+    box-shadow: 0 0 5px 2px #00b300;
+  }
+
+  &.down{
+    background-color: #ff0000;
+    box-shadow: 0 0 5px 2px #ff0000;
+  }
+
+  &.loading{
+    background-color: #ffcc00;
+    box-shadow: 0 0 0 2px #ffcc00;
+  }
+}
+

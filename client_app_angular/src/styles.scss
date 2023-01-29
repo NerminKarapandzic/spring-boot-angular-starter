@@ -1,0 +1,12 @@
+/* You can add global styles to this file, and also import other style files */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --vertical-nav-width: 250px;
+}
+
+.link{
+  @apply font-medium text-blue-600 transition-all duration-200 hover:text-blue-700 hover:underline focus:text-blue-700
+}

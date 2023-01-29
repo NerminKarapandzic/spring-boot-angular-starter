@@ -1,0 +1,11 @@
+.storage-bar{
+  display: flex;
+  background: gray;
+  border-radius: 4px;
+
+  .free{
+    background: blue;
+    padding: 4px;
+    border-radius: 4px;
+  }
+}

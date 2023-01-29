@@ -1,0 +1,18 @@
+
+<div class="snackbar-container" [class.has-errors]="errors.size > 0">
+  <div class="alert alert-{{err.value.severity}} flex flex-col items-start" *ngFor="let err of errors | keyvalue">
+    <div class="flex w-full justify-between">
+      <span>{{err.value.message}}</span>
+      <button class="btn btn-sm btn-circle btn-ghost" (click)="dismissError(err.key)">
+        <fa-icon [icon]="['far', 'circle-xmark']"></fa-icon>
+      </button>
+    </div>
+    <div *ngIf="err.value.additionalInfo">
+      <div class="flex gap-x-2 w-full" *ngFor="let info of err.value.additionalInfo | keyvalue">
+        <span class="font-bold">{{info.key}}: </span>
+        <span class="text-error">{{info.value}}</span>
+      </div>
+    </div>
+    <a class="link" *ngIf="err.value.link" [routerLink]="[err.value.link]">{{err.value.linkText}}</a>
+  </div>
+</div>

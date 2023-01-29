@@ -1,0 +1,24 @@
+<div class="w-full flex gap-x-4 my-2">
+  <div class="p-2 rounded-lg bg-base-200 font-bold cursor-pointer hover:bg-base-300"
+       [class.selected]="selectedTag?.tag === tag.tag"
+       *ngFor="let tag of availableTags" (click)="showOptions(tag)">
+    {{tag.tag}}
+  </div>
+</div>
+
+<div class="w-full gap-x-2 flex" *ngIf="selectedTag">
+  <div *ngFor="let option of selectedTag.values">
+    <div class="p-2 rounded-lg bg-base-200 cursor-pointer hover:bg-base-300"
+         [class.bg-base-300]="false" (click)="selectFilter(selectedTag, option)">
+      {{option}}
+    </div>
+  </div>
+</div>
+
+<div class="flex w-full my-2 gap-x-2">
+  <h2 class="text-xl" *ngIf="selectedFilters.length > 0">Selected filters</h2>
+  <div *ngFor="let filter of selectedFilters" class="bg-base-300 p-1 px-2 rounded-lg">
+    <span> {{filter}} </span>
+    <fa-icon [icon]="['fas', 'times']" (click)="removeFilter(filter)"></fa-icon>
+  </div>
+</div>

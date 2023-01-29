@@ -1,0 +1,14 @@
+<app-actuator-tags [availableTags]="availableTags"
+                   (selectedFiltersChange)="selectedFilters = $event"></app-actuator-tags>
+
+<div class="w-full h-24">
+  <ngx-charts-line-chart [results]="metrics.seriesData" class="w-full"
+                         [xAxis]="true" [yAxis]="true" [legend]="true" [showGridLines]="false"
+                         *ngIf="metrics.seriesData && metrics.seriesData.length > 0"></ngx-charts-line-chart>
+</div>
+
+<div class="flex mt-2 w-full gap-x-4 justify-between">
+  <span>Total time: {{totalTime | number:'1.3-3'}} s</span>
+  <span>Max time: {{maxTime | number:'1.3-3'}} s</span>
+  <span>Average time: {{averageTime | number:'1.3-3'}} s</span>
+</div>

@@ -1,0 +1,74 @@
+<div class="flex bg-base-300 h-full rounded-box">
+  <!--Buckets and folders-->
+  <div class="w-full max-w-screen-xs lg:max-w-xs p-4">
+    <!--Create new bucket button-->
+    <label class="btn btn-sm w-full gap-x-2" for="newBucketModal">
+      <fa-icon [icon]="['fas', 'edit']"></fa-icon>
+      <span>Create new bucket</span>
+    </label>
+
+    <!--Bucket list-->
+    <div class="flex flex-col gap-y-2 mt-4">
+      <h3 class="text-base-content/60">All buckets</h3>
+      <ul class="w-full">
+        <li *ngFor="let bucket of buckets" (click)="loadBucketFiles(bucket.name)" class="mt-2">
+          <a class="font-bold flex justify-between w-full hover:text-accent cursor-pointer"
+             [class.active]="activeBucket === bucket.name">
+            <span>{{bucket.name | bucketname}}</span>
+            <span *ngIf="bucket.public" class="btn btn-outline btn-accent btn-xs">Public</span>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!--Files container-->
+  <div class="flex-1 flex flex-col p-2">
+    <!--Files controls navbar-->
+    <div class="flex justify-end gap-x-2 p-2">
+      <button class="btn btn-xs gap-x-2" (click)="fileInput.click()">
+        <fa-icon [icon]="['fas', 'upload']"></fa-icon>
+        <span>Upload new image</span>
+      </button>
+      <input type="file" #fileInput accept="image/png, image/jpeg, image/jpg" class="hidden"
+             (change)="uploadFile($event)">
+    </div>
+    <!--Files grid list-->
+    <ng-container *ngIf="files?.length > 0; else noFiles">
+      <div class="grid grid-cols-5 gap-4 p-4">
+          <app-img
+            class="aspect-square rounded-box overflow-hidden cursor-pointer p-2 bg-base-200"
+            [src]="file.name" [bucket]=activeBucket *ngFor="let file of files"></app-img>
+      </div>
+      <app-pagination [currentPage]="currentPage"
+                      [hasNext]="hasNextPage"
+                      [hasPrevious]="hasPreviousPage"
+                      (pageChange)="onPageChange($event)"></app-pagination>
+    </ng-container>
+    <ng-template #noFiles>
+      <div class="p-4">
+        <h3 class="text-base-content/50">No files in this bucket</h3>
+      </div>
+    </ng-template>
+  </div>
+</div>
+
+<input type="checkbox" id="newBucketModal" class="modal-toggle" #modalRef/>
+<label for="newBucketModal" class="modal cursor-pointer">
+  <label class="modal-box relative flex flex-col gap-y-4" for="">
+    <h3 class="text-lg font-bold">Create new bucket</h3>
+    <div class="flex flex-col gap-y-3">
+      <div class="flex gap-x-2 justify-between">
+        <label>Name</label>
+        <input class="input input-xs input-bordered" type="text" placeholder="Bucket name" #name>
+      </div>
+      <div class="flex gap-x-2 justify-between">
+        <label>Is public</label>
+        <input type="checkbox" class="toggle toggle-accent toggle-sm" checked disabled #isPublic/>
+      </div>
+    </div>
+    <div class="flex justify-end">
+      <button class="btn btn-sm" (click)="createBucket(name.value, isPublic.checked, modalRef)">Create</button>
+    </div>
+  </label>
+</label>

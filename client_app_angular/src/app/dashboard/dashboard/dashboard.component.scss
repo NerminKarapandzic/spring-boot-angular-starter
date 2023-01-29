@@ -1,0 +1,9 @@
+.vertical-sidebar{
+  width: var(--vertical-nav-width);
+  transition: 0.3s ease-in-out;
+
+  &:not(.open){
+    margin-left: calc(var(--vertical-nav-width) * -1);
+    visibility: hidden;
+  }
+}

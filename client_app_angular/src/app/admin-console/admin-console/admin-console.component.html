@@ -1,0 +1,26 @@
+<!--Wrapper-->
+<div class="flex w-full">
+  <!--Sidebar-->
+  <app-dashboard-sidebar class="h-screen p-2 bg-base-300/50 vertical-sidebar"
+                         [class.open]="sidebarOpen"
+                         [menuItems]="menuItems"
+                         [sidebarOpen]="sidebarOpen"></app-dashboard-sidebar>
+
+  <!--Main-->
+  <div class="flex-1">
+    <app-dashboard-navbar class="navbar bg-base-300/50 px-4 min-h-6">
+      <button class="btn btn-sm btn-circle btn-ghost p-1 start" (click)="toggleSidebar()">
+        <fa-icon [icon]="['fas', 'bars']"></fa-icon>
+      </button>
+
+      <button class="end">
+        Back to dashboard
+      </button>
+    </app-dashboard-navbar>
+
+    <!--Main content-->
+    <div class="p-2">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</div>

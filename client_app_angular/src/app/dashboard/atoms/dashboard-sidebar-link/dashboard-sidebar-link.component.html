@@ -1,0 +1,6 @@
+<li [routerLink]="[menuItem.link]">
+  <a routerLinkActive="active" class="rounded-box" [routerLinkActiveOptions]="{ exact: true }">
+    <fa-icon [icon]="menuItem.icon"></fa-icon>
+    {{menuItem.label}}
+  </a>
+</li>

@@ -1,0 +1,20 @@
+
+<div class="flex gap-x-2 justify-between">
+    <a href="/dashboard" class="btn btn-ghost btn-sm rounded-btn">
+      APP_NAME
+    </a>
+
+    <div>
+      <button class="btn btn-circle btn-sm btn-ghost">
+        <fa-icon [icon]="['far', 'bell']"></fa-icon>
+      </button>
+
+      <app-authenticated-user-dropdown></app-authenticated-user-dropdown>
+    </div>
+  </div>
+
+<!--Sidebar menu items-->
+<ul class="menu mt-2">
+  <app-dashboard-sidebar-link class="rounded-box" *ngFor="let item of menuItems"
+                              [menuItem]="item"></app-dashboard-sidebar-link>
+</ul>

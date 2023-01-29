@@ -1,0 +1,26 @@
+<div class="dropdown dropdown-bottom dropdown-end" *ngIf="authService.isLoggedIn$ | async as user">
+  <button tabindex="0" class="btn btn-circle btn-sm btn-ghost">
+    <fa-icon [icon]="['far', 'user']"></fa-icon>
+  </button>
+  <div tabindex="0" class="dropdown-content menu shadow bg-base-100 rounded-box w-52">
+    <div class="p-4 flex flex-col">
+      <span>Signed in as</span>
+      <ng-container *ngIf="user">
+        <span class="text-xs">{{'username'}}</span>
+      </ng-container>
+    </div>
+    <ul class="menu border-y-base-200 border-y">
+      <li routerLink="/dashboard/profile">
+        <a>Profile</a>
+      </li>
+      <li routerLink="/dashboard/settings">
+        <a>Settings</a>
+      </li>
+    </ul>
+    <ul class="menu rounded-box">
+      <li (click)="logout()">
+        <a>Logout</a>
+      </li>
+    </ul>
+  </div>
+</div>

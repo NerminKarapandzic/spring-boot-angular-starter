@@ -1,0 +1,14 @@
+<div class="flex w-full flex-col gap-y-4 p-2 md:p-4 rounded-box bg-base-200">
+  <div class="flex justify-between">
+    <h1>Disk</h1>
+    <app-health-indicator [status]="status"></app-health-indicator>
+  </div>
+
+  <div class="storage-bar">
+    <div class="free" [style]="{width: (free / total) * 100 + '%'}"></div>
+  </div>
+  <div class="flex justify-between -mt-3">
+    <span>Free: {{free / 1024 / 1024 / 1024 | number: '1.0-2'}}GB</span>
+    <span>Total: {{total / 1024 / 1024 / 1024 | number: '1.0-2'}} GB</span>
+  </div>
+</div>

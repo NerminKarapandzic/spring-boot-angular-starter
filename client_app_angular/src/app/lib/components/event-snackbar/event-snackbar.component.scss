@@ -1,0 +1,23 @@
+.snackbar-container{
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  row-gap: .25rem;
+  position: fixed;
+  bottom: -50px;
+  transition: .25s ease-in-out;
+
+  .alert{
+    min-width: 50%;
+    width: fit-content;
+
+    @media (max-width: 768px) {
+      width: 95%;
+    }
+  }
+
+  &.has-errors{
+    bottom: 0.25rem;
+  }
+}

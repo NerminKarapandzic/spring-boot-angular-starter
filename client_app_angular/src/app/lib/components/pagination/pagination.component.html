@@ -1,0 +1,5 @@
+<div class="btn-group flex justify-center">
+  <button class="btn btn-sm" (click)="onPageChange(currentPage - 1)" [disabled]="!hasPrevious">«</button>
+  <button class="btn btn-sm">{{currentPage}}</button>
+  <button class="btn btn-sm" (click)="onPageChange(currentPage + 1)" [disabled]="!hasNext">»</button>
+</div>

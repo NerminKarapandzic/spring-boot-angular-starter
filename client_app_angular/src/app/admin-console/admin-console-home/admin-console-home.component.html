@@ -1,0 +1,24 @@
+<ng-container *ngIf="status$ | async as status">
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+    <app-disk-info [free]="status.components.diskSpace.details.free"
+                   [total]="status.components.diskSpace.details.total"
+                   [status]="status.components.diskSpace.status" class="w-full"></app-disk-info>
+
+    <app-database-info class="flex" [status]="status.components.db.status"
+                       [database]="status.components.db.details.database"></app-database-info>
+
+    <app-application-info class="flex" [status]="status.status"
+                          [uptime]="info.uptime" *ngIf="info$ | async as info"></app-application-info>
+  </div>
+</ng-container>
+
+<div class="tabs mb-4">
+  <a class="tab tab-lifted" [class.tab-active]="selectedTab == 'cpu'" (click)="selectTab('cpu')">Cpu usage</a>
+  <a class="tab tab-lifted" [class.tab-active]="selectedTab == 'memory'" (click)="selectTab('memory')">Memory usage</a>
+  <a class="tab tab-lifted" [class.tab-active]="selectedTab == 'httpRequests'"
+     (click)="selectTab('httpRequests')">Http requests</a>
+</div>
+
+<div class="w-full h-24">
+  <app-http-request-metrics *ngIf="selectedTab=='httpRequests'"></app-http-request-metrics>
+</div>
